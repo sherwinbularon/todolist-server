@@ -1,5 +1,6 @@
 use actix_web::{web, HttpResponse, Responder};
 use uuid::Uuid;
+use validator::Validate;
 
 use crate::models::{CreateTask, Task};
 use crate::state::TaskList;
@@ -13,12 +14,24 @@ pub async fn create_task(
     task: web::Json<CreateTask>,
     data: web::Data<TaskList>,
 ) -> impl Responder {
+    // Validate the input
+    if let Err(e) = task.validate() {
+        return HttpResponse::BadRequest().json(format!("Validation error: {:?}", e));
+    }
+
     let mut tasks = data.lock().unwrap();
+
+    // Ensure unique title
+    if tasks.iter().any(|t| t.title.eq_ignore_ascii_case(&task.title)) {
+        return HttpResponse::BadRequest().body("Duplicate title");
+    }
+
     let new_task = Task {
         id: Uuid::new_v4().to_string(),
         title: task.title.clone(),
         completed: false,
     };
+
     tasks.push(new_task.clone());
     HttpResponse::Created().json(new_task)
 }

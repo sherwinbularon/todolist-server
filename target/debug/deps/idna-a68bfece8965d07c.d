@@ -1,0 +1,10 @@
+/Users/sherwinfloydbularon/todolist-server/target/debug/deps/libidna-a68bfece8965d07c.rmeta: /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/lib.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/punycode.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46_mapping_table.rs
+
+/Users/sherwinfloydbularon/todolist-server/target/debug/deps/libidna-a68bfece8965d07c.rlib: /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/lib.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/punycode.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46_mapping_table.rs
+
+/Users/sherwinfloydbularon/todolist-server/target/debug/deps/idna-a68bfece8965d07c.d: /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/lib.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/punycode.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46.rs /Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46_mapping_table.rs
+
+/Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/lib.rs:
+/Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/punycode.rs:
+/Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46.rs:
+/Users/sherwinfloydbularon/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/idna-0.4.0/src/uts46_mapping_table.rs:

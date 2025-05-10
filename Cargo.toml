@@ -9,8 +9,6 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 uuid = { version = "1", features = ["v4"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
-name = "todolist-server"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
+validator = { version = "0.16", features = ["derive"] }
+lazy_static = "1.4"
+regex = "1"
