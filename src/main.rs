@@ -1,15 +1,18 @@
 mod handlers;
 mod models;
 mod state;
-
 use actix_web::{web, App, HttpServer};
 use state::TaskList;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    let host = "127.0.0.1";
+    let port = 8080;
+    let address = format!("{}:{}", host, port);
+
     let task_list = web::Data::new(TaskList::new(Vec::new()));
 
-    println!("🚀 Server running at http://127.0.0.1:8080");
+    println!("🚀 Server running at http://{}", address);
 
     HttpServer::new(move || {
         App::new()
@@ -19,8 +22,7 @@ async fn main() -> std::io::Result<()> {
             .route("/tasks/{id}", web::put().to(handlers::update_task))
             .route("/tasks/{id}", web::delete().to(handlers::delete_task))
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind(address)?
     .run()
     .await
 }
-
