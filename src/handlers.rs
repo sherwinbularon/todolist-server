@@ -4,6 +4,19 @@ use validator::Validate;
 use crate::models::{CreateTask, Task, UpdateTask};
 use sqlx::PgPool;
 
+// ✅ Health check endpoint
+pub async fn health_check(db_pool: web::Data<PgPool>) -> impl Responder {
+    match sqlx::query("SELECT 1")
+        .fetch_one(db_pool.get_ref())
+        .await
+    {
+        Ok(_) => HttpResponse::Ok().body("✅ DB connection OK"),
+        Err(err) => {
+            eprintln!("❌ Health check failed: {}", err);
+            HttpResponse::InternalServerError().body("❌ DB connection failed")
+        }
+    }
+}
 
 pub async fn get_tasks(db: web::Data<PgPool>) -> impl Responder {
     let result = sqlx::query_as::<_, Task>("SELECT * FROM tasks")
@@ -27,7 +40,6 @@ pub async fn create_task(
         return HttpResponse::BadRequest().json(format!("Validation error: {:?}", e));
     }
 
-    // Check for duplicate title
     let duplicate = sqlx::query_scalar::<_, i64>(
         "SELECT COUNT(*) FROM tasks WHERE LOWER(title) = LOWER($1)"
     )

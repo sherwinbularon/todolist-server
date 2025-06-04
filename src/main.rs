@@ -20,10 +20,10 @@ async fn main() -> std::io::Result<()> {
         .await
         .expect("❌ Failed to connect to PostgreSQL");
 
-    // Automatically choose a free port by binding to port 0
-    let listener = TcpListener::bind("127.0.0.1:0")?;
-    let address = listener.local_addr()?;
-
+    // Get the PORT from env or default to 8000
+    let port = env::var("PORT").unwrap_or_else(|_| "8000".to_string());
+    let address = format!("0.0.0.0:{}", port);
+    let listener = TcpListener::bind(&address)?;
     println!("🚀 Server running at http://{}", address);
 
     HttpServer::new(move || {
@@ -40,8 +40,9 @@ async fn main() -> std::io::Result<()> {
             .route("/tasks", web::post().to(handlers::create_task))
             .route("/tasks/{id}", web::put().to(handlers::update_task))
             .route("/tasks/{id}", web::delete().to(handlers::delete_task))
+            .route("/health", web::get().to(handlers::health_check))
     })
-    .listen(listener)? // use the dynamically selected port
+    .listen(listener)?
     .run()
     .await
 }
