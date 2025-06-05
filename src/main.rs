@@ -20,6 +20,12 @@ async fn main() -> std::io::Result<()> {
         .await
         .expect("❌ Failed to connect to PostgreSQL");
 
+    // ✅ Run SQL migrations from ./migrations
+    sqlx::migrate!()
+        .run(&pool)
+        .await
+        .expect("❌ Failed to run database migrations");
+
     // Get the PORT from env or default to 8000
     let port = env::var("PORT").unwrap_or_else(|_| "8000".to_string());
     let address = format!("0.0.0.0:{}", port);
